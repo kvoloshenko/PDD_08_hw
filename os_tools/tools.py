@@ -38,18 +38,9 @@ def info_dir(type):
     # print(os.listdir())
     items = []
     dir_items = os.listdir()
-    for item in dir_items:
-        # print('os.path.isfile(item)=',os.path.isfile(item))
-        if type == 'files' and os.path.isfile(item):
-            #print('      ', item)
-            items.append(item)
-        elif type == 'dirs' and not (os.path.isfile(item)):
-            #print('      ', item)
-            items.append(item)
-        elif type == 'all':
-            #print('      ', item)
-            items.append(item)
-
+    if type == 'files': items = [item for item in dir_items if os.path.isfile(item)]
+    elif type == 'dirs': items = [item for item in dir_items if not (os.path.isfile(item))]
+    elif type == 'all': items = [item for item in dir_items]
     return items
 
 def save_info_dir():

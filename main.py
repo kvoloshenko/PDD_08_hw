@@ -25,7 +25,7 @@ while True:
         f.create_dir(dir_name)
     elif choice == '2':
         dir_name = input('   Введите имя папки или файла : ')
-        f.del_dir(dir_name)
+        f.del_file_or_dir(dir_name)
     elif choice == '3':
         dir_name = input('   Введите имя папки или файла: ')
         dir_new = input('   Введите новое имя папки или файла: ')

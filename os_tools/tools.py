@@ -15,16 +15,10 @@ def create_dir(dir_name):
 """
 
 
-def del_dir(dir_name):
-    # print(os.getcwd())
-    # dir_name = input('   Введите имя папки или файла : ')
+def del_file_or_dir(dir_name):
     path = os.path.join(os.getcwd(), dir_name)
-    # print('path=',path)
     if os.path.exists(path):
-        if os.path.isfile(dir_name):
-            os.remove(dir_name)
-        else:
-            os.rmdir(dir_name)
+        os.remove(dir_name) if os.path.isfile(dir_name) else os.rmdir(dir_name)
     else:
         print('      Файл или папка отсутсвует')
 

@@ -6,7 +6,8 @@ import platform
 создание папки
 """
 def create_dir(dir_name):
-    if not os.path.exists(dir_name): os.mkdir(dir_name)
+    #if not os.path.exists(dir_name): os.mkdir(dir_name)
+    os.mkdir(dir_name) if not os.path.exists(dir_name) else print(f'Directory {dir_name} already exist')
 
 
 """

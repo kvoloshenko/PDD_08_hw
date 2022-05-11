@@ -13,8 +13,6 @@ def create_dir(dir_name):
 """
 удаление файла(папки)
 """
-
-
 def del_file_or_dir(dir_name):
     path = os.path.join(os.getcwd(), dir_name)
     if os.path.exists(path):
@@ -26,17 +24,12 @@ def del_file_or_dir(dir_name):
 """
 копировать (файл/папку)
 """
-
-
 def copy_dir(dir_name, dir_new):
     # print(os.getcwd())
     #dir_name = input('   Введите имя папки или файла: ')
     #dir_new = input('   Введите новое имя папки или файла: ')
     if os.path.exists(dir_name):
-        if os.path.isfile(dir_name):
-            shutil.copy(dir_name, dir_new)
-        else:
-            shutil.copytree(dir_name, dir_new, False, None)
+        shutil.copy(dir_name, dir_new) if os.path.isfile(dir_name) else shutil.copytree(dir_name, dir_new, False, None)
     else:
         print('      Файл или папка отсутсвует')
 

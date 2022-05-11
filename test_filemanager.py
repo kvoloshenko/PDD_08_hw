@@ -11,14 +11,7 @@ def test_about():
 
 # тесты для "грязных" функций
 
-def test_copy_dir():
-    dir_name = 'test_copy_dir1'
-    dir_new = 'test_copy_dir2'
-    os.mkdir(dir_name)
-    f.copy_dir(dir_name, dir_new)
-    assert os.path.exists(dir_new)
-    os.rmdir(dir_name)
-    os.rmdir(dir_new)
+
 
 
 def test_info_dir():

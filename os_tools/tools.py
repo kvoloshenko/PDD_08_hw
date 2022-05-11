@@ -54,13 +54,10 @@ def info_dir(type):
 
 def save_info_dir():
     dir_items = os.listdir()
-    l_dirs = ['dirs']
-    l_files = ['files']
-    for item in dir_items:
-        if os.path.isfile(item):
-            l_files.append(item)
-        elif not (os.path.isfile(item)):
-            l_dirs.append(item)
+    l_files = [item for item in dir_items if os.path.isfile(item)]
+    l_files.insert(0, 'files')
+    l_dirs = [item for item in dir_items if not (os.path.isfile(item))]
+    l_dirs.insert(0, 'dirs')
     with open('listdir.txt', 'w') as f:
         len_files = len(l_files)
         #print (f'len_files={len_files}')

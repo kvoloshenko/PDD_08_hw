@@ -89,9 +89,7 @@ def account_get():
     if all_data == {}:
         account = 0
     else:  account = all_data['account']
-    #print('Сейчас на счету: ', account)
     return account
-
 
 def run():
     while True:

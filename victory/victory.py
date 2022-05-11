@@ -17,18 +17,6 @@ print(result) # [5, 1]
 В конце считаем количество правильных и неправильных ответов и предлагаем начать снова
 """
 
-"""
-03.01.1956 Мел Гибсон
-06.01.1938 Адриано Челентано
-07.01.1964 Николас Кейдж
-08.01.1935 Элвис Прэсли
-17.01.1962 Джим Кэрри
-18.01.1955 Кевин Костнер
-24.01.1961 Настасья Кински
-27.01.1964 Бриджит Фонда
-23.02.1944 Олег Янковский
-05.03.1955 Орнелла Мути
-"""
 def run():
     persons = [{'birthday': '03.01.1956', 'name': 'Мел Гибсон'},
                {'birthday': '06.01.1938', 'name': 'Адриано Челентано'},
@@ -40,17 +28,10 @@ def run():
                {'birthday': '27.01.1964', 'name': 'Бриджит Фонда'},
                {'birthday': '23.02.1944', 'name': 'Олег Янковский'},
                {'birthday': '05.03.1955', 'name': 'Орнелла Мути'}]
-
-    # print(type(persons),persons)
-
-
     random_integer_array = random_array(0, 10, 5)
     number_of_correct_answers = 0
     n = 1
     for i in random_integer_array:
-        # print(i)
-        # print(persons[i]['birthday'])
-        # print(persons[i]['name'])
         s = 'Попытка №' + str(n) + ': Введите дату рождения ' + persons[i]['name'] + 'в формате dd.mm.yyyy: '
         n += 1
         answer = input(s)
@@ -58,13 +39,9 @@ def run():
             number_of_correct_answers += 1
         else:
             print('правильный ответ:', persons[i]['birthday'])
-
     print('Количество правильных ответов=', number_of_correct_answers)
 
 def random_array(low, high, size):
-    # low = 0
-    # high = 10
-    # size = 5
     number_of_unique_attempts = 0
     while (number_of_unique_attempts != size):  # пока не получим 5 разных случайных чисел
         random_integer_array = np.random.randint(low, high, size)

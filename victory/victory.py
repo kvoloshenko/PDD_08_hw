@@ -43,14 +43,8 @@ def run():
 
     # print(type(persons),persons)
 
-    number_of_unique_attempts = 0
-    while (number_of_unique_attempts != 5): # пока не получим 5 разных случайных чисел
-        random_integer_array = np.random.randint(0, 10, 5)
-        # print(random_integer_array)
-        s_digits = set(random_integer_array)
-        number_of_unique_attempts = len(s_digits)
-        # print ('number_of_unique_attempts=',number_of_unique_attempts)
 
+    random_integer_array = random_array(0, 10, 5)
     number_of_correct_answers = 0
     n = 1
     for i in random_integer_array:
@@ -67,5 +61,20 @@ def run():
 
     print('Количество правильных ответов=', number_of_correct_answers)
 
+def random_array(low, high, size):
+    # low = 0
+    # high = 10
+    # size = 5
+    number_of_unique_attempts = 0
+    while (number_of_unique_attempts != size):  # пока не получим 5 разных случайных чисел
+        random_integer_array = np.random.randint(low, high, size)
+        # print(random_integer_array)
+        s_digits = set(random_integer_array)
+        number_of_unique_attempts = len(s_digits)
+        #print ('number_of_unique_attempts=',number_of_unique_attempts)
+    return random_integer_array
+
+
 if __name__ == '__main__':
     run()
+    #random_array(0, 10, 5)

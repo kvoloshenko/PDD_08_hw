@@ -5,13 +5,8 @@ import platform
 """
 создание папки
 """
-
-
 def create_dir(dir_name):
-    # dir_name = input('   Введите имя папки: ')
-    if not os.path.exists(dir_name):
-        # сздать папку передаем путь
-        os.mkdir(dir_name)
+    if not os.path.exists(dir_name): os.mkdir(dir_name)
 
 
 """

@@ -25,7 +25,7 @@ while True:
         f.create_dir(dir_name)
     elif choice == '2':
         dir_name = input('   Введите имя папки или файла : ')
-        f.del_dir(dir_name)
+        f.del_file_or_dir(dir_name)
     elif choice == '3':
         dir_name = input('   Введите имя папки или файла: ')
         dir_new = input('   Введите новое имя папки или файла: ')
@@ -43,9 +43,11 @@ while True:
         f.save_info_dir()
         print('      Данные успешно сохранены')
     elif choice == '7':
-        print('      ', f.info_os())
+        # print('      ', f.info_os())
+        f.print_f(f.info_os) # Вывод с декоратором
     elif choice == '8':
-        print('      ', f.about())
+        # print('      ', f.about())
+        f.print_f(f.about) # Вывод с декоратором
     elif choice == '9':
         v.run()
     elif choice == '10':

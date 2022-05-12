@@ -1,34 +1,22 @@
 import os
 import shutil
 import platform
-
+import decorators as d
 """
 создание папки
 """
-
-
 def create_dir(dir_name):
-    # dir_name = input('   Введите имя папки: ')
-    if not os.path.exists(dir_name):
-        # сздать папку передаем путь
-        os.mkdir(dir_name)
+    #if not os.path.exists(dir_name): os.mkdir(dir_name)
+    os.mkdir(dir_name) if not os.path.exists(dir_name) else print(f'Directory {dir_name} already exist')
 
 
 """
 удаление файла(папки)
 """
-
-
-def del_dir(dir_name):
-    # print(os.getcwd())
-    # dir_name = input('   Введите имя папки или файла : ')
+def del_file_or_dir(dir_name):
     path = os.path.join(os.getcwd(), dir_name)
-    # print('path=',path)
     if os.path.exists(path):
-        if os.path.isfile(dir_name):
-            os.remove(dir_name)
-        else:
-            os.rmdir(dir_name)
+        os.remove(dir_name) if os.path.isfile(dir_name) else os.rmdir(dir_name)
     else:
         print('      Файл или папка отсутсвует')
 
@@ -36,17 +24,12 @@ def del_dir(dir_name):
 """
 копировать (файл/папку)
 """
-
-
 def copy_dir(dir_name, dir_new):
     # print(os.getcwd())
     #dir_name = input('   Введите имя папки или файла: ')
     #dir_new = input('   Введите новое имя папки или файла: ')
     if os.path.exists(dir_name):
-        if os.path.isfile(dir_name):
-            shutil.copy(dir_name, dir_new)
-        else:
-            shutil.copytree(dir_name, dir_new, False, None)
+        shutil.copy(dir_name, dir_new) if os.path.isfile(dir_name) else shutil.copytree(dir_name, dir_new, False, None)
     else:
         print('      Файл или папка отсутсвует')
 
@@ -55,29 +38,17 @@ def info_dir(type):
     # print(os.listdir())
     items = []
     dir_items = os.listdir()
-    for item in dir_items:
-        # print('os.path.isfile(item)=',os.path.isfile(item))
-        if type == 'files' and os.path.isfile(item):
-            #print('      ', item)
-            items.append(item)
-        elif type == 'dirs' and not (os.path.isfile(item)):
-            #print('      ', item)
-            items.append(item)
-        elif type == 'all':
-            #print('      ', item)
-            items.append(item)
-
+    if type == 'files': items = [item for item in dir_items if os.path.isfile(item)]
+    elif type == 'dirs': items = [item for item in dir_items if not (os.path.isfile(item))]
+    elif type == 'all': items = [item for item in dir_items]
     return items
 
 def save_info_dir():
     dir_items = os.listdir()
-    l_dirs = ['dirs']
-    l_files = ['files']
-    for item in dir_items:
-        if os.path.isfile(item):
-            l_files.append(item)
-        elif not (os.path.isfile(item)):
-            l_dirs.append(item)
+    l_files = [item for item in dir_items if os.path.isfile(item)]
+    l_files.insert(0, 'files')
+    l_dirs = [item for item in dir_items if not (os.path.isfile(item))]
+    l_dirs.insert(0, 'dirs')
     with open('listdir.txt', 'w') as f:
         len_files = len(l_files)
         #print (f'len_files={len_files}')
@@ -102,10 +73,13 @@ def save_info_dir():
             else: f.write(', ')
             j-=1
 
-
 def info_os():
     #print('      ', platform.platform())
     return platform.platform()
+
+@d.add_separators
+def print_f(f):
+    print('      ', f())
 
 def about():
     #print('      ', '(c) Konstantin Voloshenko')

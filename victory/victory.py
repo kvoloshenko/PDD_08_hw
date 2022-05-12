@@ -1,5 +1,5 @@
 import numpy as np
-
+# import random
 """
 7. (МОДУЛЬ 4) В проекте создать новый модуль victory.py. Задание
 Написать или улучшить программу Викторина из предыдущего дз (Для тренировки предлагаю не пользоваться никакими библиотеками кроме random)
@@ -50,6 +50,10 @@ def random_array(low, high, size):
         number_of_unique_attempts = len(s_digits)
         #print ('number_of_unique_attempts=',number_of_unique_attempts)
     return random_integer_array
+    # Так не работает:
+    # return list({random.randint(low, high) for i in range(size)})
+
+
 
 
 if __name__ == '__main__':

@@ -59,10 +59,11 @@ def purchase_add(purchase, sum):
     data_save(all_data)
 
 def check_purchase():
-    while True:
-        answer = input('   Введите сумму покупки: ')
-        if answer.isdigit(): break
-    sum = int(answer)
+    # while True:
+    #     answer = input('   Введите сумму покупки: ')
+    #     if answer.isdigit(): break
+    # sum = int(answer)
+    sum = enter_account_amount('   Введите сумму покупки: ')
     account = account_get()
     if sum <= account:
         account -= sum
@@ -139,13 +140,14 @@ def data_read():
         all_data = {}
         return all_data
 
-def enter_account_amount():
+def enter_account_amount(msg):
     while True:
         # answer = input('Введите сумму пополнения счета: ')
         # if answer.isdigit(): break
         try:
             # Тот код который может вызвать исключение
-            sum = int(input('Введите сумму пополнения счета: '))
+            # sum = int(input('Введите сумму пополнения счета: '))
+            sum = int(input(msg))
         except ValueError:
             # Этот блок срабатывает если было исключение
             print('Вы ввели не число')
@@ -159,4 +161,4 @@ def enter_account_amount():
 if __name__ == '__main__':
     run()
     #print('Сейчас на счету: ', account_get())
-    #enter_account_amount()
+    #enter_account_amount('Введите сумму пополнения счета: ')

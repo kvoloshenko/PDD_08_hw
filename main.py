@@ -43,9 +43,11 @@ while True:
         f.save_info_dir()
         print('      Данные успешно сохранены')
     elif choice == '7':
-        print('      ', f.info_os())
+        # print('      ', f.info_os())
+        f.print_f(f.info_os) # Вывод с декоратором
     elif choice == '8':
-        print('      ', f.about())
+        # print('      ', f.about())
+        f.print_f(f.about) # Вывод с декоратором
     elif choice == '9':
         v.run()
     elif choice == '10':

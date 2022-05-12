@@ -1,7 +1,7 @@
 import os
 import shutil
 import platform
-
+import decorators as d
 """
 создание папки
 """
@@ -73,10 +73,13 @@ def save_info_dir():
             else: f.write(', ')
             j-=1
 
-
 def info_os():
     #print('      ', platform.platform())
     return platform.platform()
+
+@d.add_separators
+def print_f(f):
+    print('      ', f())
 
 def about():
     #print('      ', '(c) Konstantin Voloshenko')

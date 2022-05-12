@@ -100,10 +100,11 @@ def run():
 
         choice = input('Выберите пункт меню : ')
         if choice == '1':
-            while True:
-                answer = input('Введите сумму пополнения счета: ')
-                if answer.isdigit(): break
-            sum = int(answer)
+            # while True:
+            #     answer = input('Введите сумму пополнения счета: ')
+            #     if answer.isdigit(): break
+            # sum = int(answer)
+            sum = enter_account_amount()
             account_add(sum)
             print('   Сейчас на счету: ', account_get())
         elif choice == '2':
@@ -138,6 +139,24 @@ def data_read():
         all_data = {}
         return all_data
 
+def enter_account_amount():
+    while True:
+        # answer = input('Введите сумму пополнения счета: ')
+        # if answer.isdigit(): break
+        try:
+            # Тот код который может вызвать исключение
+            sum = int(input('Введите сумму пополнения счета: '))
+        except ValueError:
+            # Этот блок срабатывает если было исключение
+            print('Вы ввели не число')
+            print('Введите верное число')
+        else:
+            # Выполняется когда нету ошибок
+            print(f'sum={sum}')
+            break
+    return sum
+
 if __name__ == '__main__':
     run()
     #print('Сейчас на счету: ', account_get())
+    #enter_account_amount()
